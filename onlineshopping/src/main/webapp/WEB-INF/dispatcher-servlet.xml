@@ -11,8 +11,8 @@
    http://www.springframework.org/schema/mvc/spring-mvc.xsd
    ">
    
-   <context:component-scan base-package="pl.pioro.onlineshopping.controller"/>
-   <context:component-scan base-package="pl.pioro.shoppingbackend.daoimpl"/>
+   <context:component-scan base-package="pl.pioro.onlineshopping"/>
+   <context:component-scan base-package="pl.pioro.shoppingbackend"/>
    
    
    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

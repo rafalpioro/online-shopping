@@ -25,7 +25,7 @@
 
 <script>
 	window.menu = '${title}';
-	window.contextRoot= '${contextRoot}'
+	window.contextRoot = '${contextRoot}'
 </script>
 
 <!-- Bootstrap core CSS -->
@@ -34,7 +34,10 @@
 <!-- Bootstrap dataTable -->
 <link href="${css}/dataTables.bootstrap4.css" rel="stylesheet">
 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+	integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+	crossorigin="anonymous">
 
 <!-- Custom styles for this template -->
 <link href="${css}/myapp.css" rel="stylesheet">
@@ -52,25 +55,22 @@
 		<!-- Page Content -->
 
 		<div class="content">
-			<c:if test="${userClickHome==true}">
-				<%@include file="home.jsp"%>
-			</c:if>
+			<div class="container">
 
-			<c:if test="${userClickAbout==true}">
-				<%@include file="about.jsp"%>
-			</c:if>
+				<div class="row">
 
-			<c:if test="${userClickContact==true}">
-				<%@include file="contact.jsp"%>
-			</c:if>
-			
-			<c:if test="${userClickAllProducts==true or userClickCategoryProducts==true }">
-				<%@include file="listProducts.jsp"%>
-			</c:if>
-			
-			<c:if test="${userClickShowProduct==true}">
-				<%@include file="singleProduct.jsp"%>
-			</c:if>
+					<div class="col-md-12">
+
+						<div class="jumbotron">
+							<h1 class="display-4">${errorTitle}</h1>
+							<hr />
+							<blockquote class="lead">${errorDescription}</blockquote>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
 
 		</div>
 		<!-- /.container -->
@@ -81,16 +81,16 @@
 		<!-- Bootstrap core JavaScript -->
 		<script src="${js}/jquery.js"></script>
 		<script src="${js}/bootstrap.bundle.min.js"></script>
-		
+
 		<!-- DataTable plugin -->
 		<script src="${js}/jquery.dataTables.js"></script>
-		
+
 		<!-- DataTable Bootstrap -->
 		<script src="${js}/dataTables.bootstrap4.js"></script>
-		
+
 		<script src="${js}/myapp.js"></script>
-		
-		
+
+
 	</div>
 </body>
 
