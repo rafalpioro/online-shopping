@@ -8,7 +8,7 @@
 	
 		<div class="col-md-12">
 			
-				<div class="alert alert-success alert-dismissible" role="alert">
+				<div class="alert alert-danger alert-dismissible" role="alert">
 				
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
     				<span aria-hidden="true">&times;</span></button>
@@ -20,16 +20,16 @@
 	</c:if>
 		<div class="col-md-8 offset-md-2">
 			
-			<div class="card card-primary">
+			<div class="card">
 				
-				<div class="card-header">
+				<div class="card-header bg-primary text-white">
 				
 					<h4>Products Management</h4>
 				
 				</div>
 				
 				<div class="card-block">
-					<sf:form modelAttribute="product" action="${contextRoot}/manage/products" method="POST">
+					<sf:form modelAttribute="product" action="${contextRoot}/manage/products" method="POST" enctype="multipart/form-data">
 						
 						<div class="form-group row">
 						
@@ -78,6 +78,17 @@
 							</div>
 						</div>
 						
+						
+						<!-- File element for image upload -->
+						<div class="form-group row">
+						
+							<label class="control-label col-md-4" for="file">Select an Image: </label>
+							<div class="col-md-8">
+								<sf:input type="file" path="file" id="file" class="form-control"/>
+								<sf:errors path="file" cssClass="form-text" element="em"/>
+							</div>
+						</div>
+						
 						<div class="form-group row">
 						
 							<label class="control-label col-md-4" for="categoryId">Select Category: </label>
@@ -111,4 +122,46 @@
 			</div>		
 		</div>	
 	</div>
+	<div class="row">
+	
+		<div class="col-md-12">
+			<hr/>
+			<h3>Available products</h3>
+			<hr/>
+		</div>
+		
+		<div class="col-md-12">
+			<div style="overflow:auto">
+			<table id="adminProductsTable" class="table table-striped table-bordered">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>&#160;</th>
+						<th>Name</th>
+						<th>Brand</th>
+						<th>Quantity</th>
+						<th>Unit Price</th>
+						<th>Active</th>
+						<th>Edit</th>
+					</tr>
+				</thead>
+				
+				<tfoot>
+					<tr>
+						<th>Id</th>
+						<th>&#160;</th>
+						<th>Name</th>
+						<th>Brand</th>
+						<th>Quantity</th>
+						<th>Unit Price</th>
+						<th>Active</th>
+						<th>Edit</th>
+					</tr>
+				</tfoot>
+			</table>
+			</div>
+		</div>
+	
+	</div>
+
 </div>
