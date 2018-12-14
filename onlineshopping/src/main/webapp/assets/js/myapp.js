@@ -213,7 +213,7 @@ var $adminProductsTable=$('#adminProductsTable');
 							mRender: function(data, type, row){
 								var str ='';
 								
-								str += '<a href="${contextRoot}/manage/'+data+'/product" class="btn btn-warning">';
+								str += '<a href="'+window.contextRoot+'/manage/'+data+'/product" class="btn btn-warning">';
 								str += '<span class="fas fa-pencil-alt"></span></a>';
 								
 								return str;
@@ -234,12 +234,19 @@ var $adminProductsTable=$('#adminProductsTable');
 								size: 'medium',
 								title: 'Product Activation or Deactivation',
 								message: dMsg,
+								closeButton: false,
 								callback: function(confirmed){
 									if(confirmed){
-										bootbox.alert({
-											size: 'medium',
-											title: 'Information',
-											message: 'You are going to perform operation on product' + value
+										
+										var activationUrl = window.contextRoot + '/manage/product/' + value + '/activation';
+										
+										$.post(activationUrl, function(data){
+											bootbox.alert({
+												size: 'medium',
+												title: 'Information',
+												closeButton: false,
+												message: data
+											});
 										});
 									}
 									else{
