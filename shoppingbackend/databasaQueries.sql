@@ -57,6 +57,31 @@ CREATE TABLE product(
 	CONSTRAINT fk_product_supplier_id FOREIGN KEY (supplier_id) REFERENCES user_detail(id)
 );
 
+CREATE TABLE address(
+	id IDENTITY,
+	user_id int,
+	address_line_one VARCHAR(100),
+	address_line_two VARCHAR(100),
+	city VARCHAR(20),
+	state VARCHAR(20),
+	country VARCHAR(20),
+	postal_code VARCHAR(10),
+	is_billing BOOLEAN,
+	is_shipping BOOLEAN,
+	CONSTRAINT fk_address_user_id FOREIGN KEY (user_id) REFERENCES user_detail(id),
+	CONSTRAINT pk_address_id PRIMARY KEY (id)	
+	);
+
+CREATE TABLE cart(
+	id IDENTITY,
+	user_id int,
+	grand_total DECIMAL(10,2),
+	cart_lines int,
+	CONSTRAINT fk_cart_user_id FOREIGN KEY (user_id) REFERENCES user_detail(id),
+	CONSTRAINT pk_cart_id PRIMARY KEY (id)
+);
+
+
 INSERT INTO product (code, name, brand, description, unit_price, quantity, is_active, category_id, supplier_id)
 VALUES ('PRDABC123BC', 'iPhone5s', 'apple', 'This is one of the best phone available',5000,5,true,2,2);
 
