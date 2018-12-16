@@ -7,6 +7,7 @@
 							<div class="card-header bg-primary text-white">
 								<h4>Sign Up - Address</h4>
 							</div>
+							</br>
 							<div class="card-block">
 								<sf:form method="POST" class="form-horizontal" id="billingForm" modelAttribute="billing">
 
@@ -14,6 +15,7 @@
 								<label class="control-label col-md-4" for="addressLineOne">Address Line One</label>
 								<div class="col-md-8">
 									<sf:input type="text" path="addressLineOne" class="form-control" placeholder="Enter Address Line One" />
+									<sf:errors path="addressLineOne" cssClass="help-block" element="em"/>
 								</div>
 							</div>
 							
@@ -28,6 +30,7 @@
 								<label class="control-label col-md-4" for="city">City</label>
 								<div class="col-md-8">
 									<sf:input type="text" path="city" class="form-control" placeholder="Enter City" />
+									<sf:errors path="city" cssClass="help-block" element="em"/>
 								</div>
 							</div>
 							
@@ -35,6 +38,15 @@
 								<label class="control-label col-md-4" for="postalCode">Postal Code</label>
 								<div class="col-md-8">
 									<sf:input type="text" path="postalCode" class="form-control" placeholder="XXXXXX" />
+									<sf:errors path="postalCode" cssClass="help-block" element="em"/>
+								</div>
+							</div>
+							
+							<div class="form-group row">
+								<label class="control-label col-md-4" for="state">State</label>
+								<div class="col-md-8">
+									<sf:input type="text" path="state" class="form-control" placeholder="Enter State" />
+									<sf:errors path="state" cssClass="help-block" element="em"/>
 								</div>
 							</div>
 							
@@ -42,6 +54,7 @@
 								<label class="control-label col-md-4" for="country">Country</label>
 								<div class="col-md-8">
 									<sf:input type="text" path="country" class="form-control" placeholder="Enter Country Name" />
+									<sf:errors path="country" cssClass="help-block" element="em"/>
 								</div>
 							</div>
 							
