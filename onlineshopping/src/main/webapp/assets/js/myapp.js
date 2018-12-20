@@ -21,10 +21,20 @@ $(function(){
 		break;
 	}
 	
+	//to tacke the csrf token
+	var token=$('meta[name="_csrf"]').attr('content');
+	var header=$('meta[name="_csrf_header"]').attr('content');
+	
+	if(token.length>0 && header.length>0){
+		// set the token header for ajax request
+		$(document).ajaxSend(function(e, xhr, options){
+			xhr.setRequestHeader(header,token);
+		})
+		
+	}
+	
 	
 	//code for jquery dataTable
-	
-	
 	
 	var $table=$('#productlistTable');
 	
@@ -89,7 +99,11 @@ $(function(){
 									str+='<a href="javascript:void(0)" class="btn btn-success disabled"><span class="fa fa-shopping-cart"></span></a>';
 								}
 								else{
-									str +='<a href="'+window.contextRoot+'/cart/add/'+data+'/product" class="btn btn-success"><span class="fa fa-shopping-cart"></span></a>';
+									if(userRole=='ADMIN'){
+										str +='<a href="'+window.contextRoot+'/manage/'+data+'/product" class="btn btn-warning"><span class="fa fa-pencil"></span></a>';
+									}else{
+										str +='<a href="'+window.contextRoot+'/cart/add/'+data+'/product" class="btn btn-success"><span class="fa fa-shopping-cart"></span></a>';
+									}
 								}
 								
 								
@@ -298,6 +312,41 @@ var $adminProductsTable=$('#adminProductsTable');
 		});
 	}
 	
+	// login validation
+var $loginForm = $('#loginForm');
+	
+	if($loginForm.length){
+		
+		$loginForm.validate({
+			rules:{
+				
+				username:{
+					required: true,
+					email: true
+				},
+				password:{
+					required: true
+				}
+				
+			},
+			messages:{
+				username:{
+					required: 'Please enter the user name',
+					email: 'Please enter valid email address'
+				},
+				password:{
+					required: 'Please enter the password'
+				}
+			},
+			errorElement: 'em',
+			errorPlacement: function(error, element){
+				// add the class of help-block
+				error.addClass('help-block');
+				//add the error element after the input element
+				error.insertAfter(element);
+			}			
+		});
+	}
 	
 });
 

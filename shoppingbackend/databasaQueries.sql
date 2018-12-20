@@ -23,7 +23,7 @@ CREATE TABLE user_detail(
 	last_name VARCHAR(50),
 	role VARCHAR(50),
 	enabled BOOLEAN,
-	password VARCHAR(50),
+	password VARCHAR(60),
 	email VARCHAR(50),
 	contact_number VARCHAR(15),
 	CONSTRAINT pk_user_id PRIMARY KEY(id)
@@ -31,13 +31,13 @@ CREATE TABLE user_detail(
 );
 
 INSERT INTO user_detail (first_name, last_name, role, enabled, password, email, contact_number )
-VALUES ('Rafal', 'Pioro', 'ADMIN',true,'admin','pioro@o2.pl', '88888888');
+VALUES ('Rafal', 'Pioro', 'ADMIN',true,'$2y$12$J9UUxk1ZSwPlyy.30MMyiuPb74p1q6z.R36e.XUGlC/a9cHvvIdKW','pioro@o2.pl', '88888888');
 
 INSERT INTO user_detail (first_name, last_name, role, enabled, password, email, contact_number )
-VALUES ('Magda', 'Pioro', 'SUPPLIER',true,'12345','mp@o2.pl', '777777');
+VALUES ('Magda', 'Pioro', 'SUPPLIER',true,'$2y$12$ypbUvSsfbo.zn.3BYwwBou1Sf35fkb1TlWrT0swT1G/8gY0FMf3sa','mp@o2.pl', '777777');
 
 INSERT INTO user_detail (first_name, last_name, role, enabled, password, email, contact_number )
-VALUES ('Kaska', 'Pioro', 'SUPPLIER',true,'12345','kp@o2.pl', '66666666');
+VALUES ('Kaska', 'Pioro', 'SUPPLIER',true,'$2y$12$C6WAedyHXeQDD.qbe7czxOnxFZaSTrwl8qirVx/IzRnIfc1aBMOHe','kp@o2.pl', '66666666');
 
 CREATE TABLE product(
 	id IDENTITY,
