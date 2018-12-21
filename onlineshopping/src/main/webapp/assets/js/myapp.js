@@ -95,16 +95,18 @@ $(function(){
 								var str = '';
 								str +='<a href="'+window.contextRoot+'/show/'+data+'/product" class="btn btn-primary"><span class="fas fa-eye"></span></a> &#160;';
 								
-								if(row.quantity<1){
-									str+='<a href="javascript:void(0)" class="btn btn-success disabled"><span class="fa fa-shopping-cart"></span></a>';
+								if(userRole=='ADMIN'){
+									str +='<a href="'+window.contextRoot+'/manage/'+data+'/product" class="btn btn-warning"><span class="fas fa-pencil-alt"></span></a>';
 								}
 								else{
-									if(userRole=='ADMIN'){
-										str +='<a href="'+window.contextRoot+'/manage/'+data+'/product" class="btn btn-warning"><span class="fa fa-pencil"></span></a>';
-									}else{
-										str +='<a href="'+window.contextRoot+'/cart/add/'+data+'/product" class="btn btn-success"><span class="fa fa-shopping-cart"></span></a>';
+									if(row.quantity<1){
+										str+='<a href="javascript:void(0)" class="btn btn-success disabled"><span class="fa fa-shopping-cart"></span></a>';
 									}
-								}
+									else{
+											str +='<a href="'+window.contextRoot+'/cart/add/'+data+'/product" class="btn btn-success"><span class="fa fa-shopping-cart"></span></a>';
+										}
+								
+									}
 								
 								
 								return str;

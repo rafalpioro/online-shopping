@@ -30,8 +30,8 @@ body {
 }
 
 .footer{
-	position: absolute;
-	bottom: 0px;
+	position: relative;
+	bottom: 5px;
 	width: 100%;
 
 
@@ -112,3 +112,6 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+.table-responsive{
+	overflow-x:inherit;
+}
