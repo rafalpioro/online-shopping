@@ -3,6 +3,15 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
 <div class="container">
+
+	<c:if test="${not empty message}">
+		<div class="alert alert-info">
+			<h3 class="text-center">
+				${message}
+			</h3>
+		</div>
+	</c:if>
+		
 	<c:choose>
 		<c:when test="${not empty cartLines}">
 		<table id="cart" class="table table-hover table-condensed">
@@ -28,19 +37,19 @@
 											<c:if test="${cartLine.available==false}">
 												<strong class="unavailable">(Not Available)</strong>
 											</c:if>
-										<p>Brand - ${cartLine.product.name}</p>
+										<p>Brand - ${cartLine.product.brand}</p>
 										<p>Description - ${cartLine.product.description}</p>
 									</div>
 								</div>
 							</td>
 							<td data-th="Price"> ${cartLine.buyingPrice} PLN</td>
 							<td data-th="Quantity">
-								<input type="number" class="form-control text-center" value="${cartLine.productCount}">
+								<input type="number" id="count_${cartLine.id}" min="1" max="3" class="form-control text-center" value="${cartLine.productCount}">
 							</td>
 							<td data-th="Subtotal" class="text-center">${cartLine.total} PLN</td>
 							<td class="actions" data-th="">
-								<button class="btn btn-info btn-md"><i class="fa fa-refresh"></i></button>
-								<button class="btn btn-danger btn-md"><i class="fa fa-trash-o"></i></button>								
+								<button type="button" name="refreshCart" value="${cartLine.id}" class="btn btn-info btn-md"><i class="fa fa-refresh"></i></button>
+								<a href="${contextRoot}/cart/${cartLine.id}/delete" class="btn btn-danger btn-md"><i class="fa fa-trash-o"></i></a>								
 							</td>
 						</tr>
 					</c:forEach>
@@ -51,7 +60,7 @@
 							<td class="text-center"><strong>Total ${userModel.cart.grandTotal} PLN</strong></td>
 						</tr>
 						<tr>
-							<td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+							<td><a href="${contextRoot}/show/all/products" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
 							<td colspan="2" class="hidden-sm"></td>
 							<td class="hidden-xs text-center"><strong>${userModel.cart.grandTotal} PLN</strong></td>
 							<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
